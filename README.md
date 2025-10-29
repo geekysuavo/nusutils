@@ -108,9 +108,10 @@ above.
 
 ### Installing
 
-You will need to have Julia 0.4.0-dev compiled and installed in
-order to build **nusutils**. It is recommended that you compile
-and install from the latest GitHub nightly commit.
+You will need to have Julia compiled and installed in order to build
+**nusutils**. It is recommended that you download the latest version
+from your distribution's package manager. In my hands, v1.12.1 from
+Homebrew works great.
 
 Once Julia is installed into the path, you can compile and install
 **gaputil**, **rejutil** and **jitutil** as follows:
