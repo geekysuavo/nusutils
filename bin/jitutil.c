@@ -100,7 +100,7 @@ int main (int argc, char **argv) {
   }
 
   /* initialize the julia interpreter. */
-  jl_init(JULIA_INIT_DIR);
+  jl_init();
 
   /* build the final schedule array. */
   if (!jit(argv[argc - 1], &N, d, &xlst)) {

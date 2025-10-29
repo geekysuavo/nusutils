@@ -105,7 +105,7 @@ int evalinit_gap (const char *fstr) {
     return EVAL_ERR;
 
   /* get the compiled function handle. */
-  evalfn = jl_get_function(jl_current_module, "g");
+  evalfn = jl_get_function(jl_main_module, "g");
 
   /* return success. */
   return EVAL_OK;
@@ -142,7 +142,7 @@ int evalinit_pdf (const char *fstr) {
     return EVAL_ERR;
 
   /* get the compiled function handle. */
-  evalfn = jl_get_function(jl_current_module, "f");
+  evalfn = jl_get_function(jl_main_module, "f");
 
   /* return success. */
   return EVAL_OK;
@@ -289,15 +289,15 @@ int evalgap (double *x, int d, tuple_t *O, tuple_t *N, double L) {
   Lval = jl_box_float64(L);
 
   /* initialize the array data type. */
-  arrtype = jl_apply_array_type(jl_float64_type, 1);
+  arrtype = jl_apply_array_type((jl_value_t*) jl_float64_type, 1);
 
   /* allocate the origin and size arrays. */
   arro = jl_alloc_array_1d(arrtype, tupsize(O));
   arrn = jl_alloc_array_1d(arrtype, tupsize(N));
 
   /* access the origin and size array data pointers. */
-  dato = (double*) jl_array_data(arro);
-  datn = (double*) jl_array_data(arrn);
+  dato = (double*) jl_array_data(arro, double);
+  datn = (double*) jl_array_data(arrn, double);
 
   /* fill the origin and size arrays. */
   for (i = 0; i < tupsize(O); i++) {
@@ -390,15 +390,15 @@ int evalpdf (double *fx, tuple_t *x, tuple_t *N) {
   double *datx, *datn;
 
   /* initialize the array data type. */
-  arrtype = jl_apply_array_type(jl_float64_type, 1);
+  arrtype = jl_apply_array_type((jl_value_t*) jl_float64_type, 1);
 
   /* allocate the origin and size arrays. */
   arrx = jl_alloc_array_1d(arrtype, tupsize(x));
   arrn = jl_alloc_array_1d(arrtype, tupsize(N));
 
   /* access the origin and size array data pointers. */
-  datx = (double*) jl_array_data(arrx);
-  datn = (double*) jl_array_data(arrn);
+  datx = (double*) jl_array_data(arrx, double);
+  datn = (double*) jl_array_data(arrn, double);
 
   /* fill the origin and size arrays. */
   for (i = 0; i < tupsize(x); i++) {

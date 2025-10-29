@@ -12,7 +12,7 @@ BINDIR=$(PREFIX)/bin
 MANDIR=$(PREFIX)/share/man/man1
 
 # julia configuration.
-JL_CMD='println(joinpath(JULIA_HOME,Base.DATAROOTDIR,"julia"))'
+JL_CMD='println(joinpath(Sys.BINDIR,Base.DATAROOTDIR,"julia"))'
 JL_SHARE=$(shell julia -e $(JL_CMD))
 CFLAGS+= $(shell $(JL_SHARE)/julia-config.jl --cflags)
 LDLIBS+= $(shell $(JL_SHARE)/julia-config.jl --ldlibs)
