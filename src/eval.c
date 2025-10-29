@@ -1,6 +1,6 @@
 
 /* nusutils: generalized deterministic nonuniform sampling utilities.
- * Copyright (C) 2015 Bradley Worley <geekysuavo@gmail.com>.
+ * Copyright (C) 2015, 2025 Bradley Worley <geekysuavo@gmail.com>.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
